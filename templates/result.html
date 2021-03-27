@@ -1,0 +1,137 @@
+<html>
+{% load static %}
+
+<head>
+
+  <title>Analysis result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'classifier/plugin.css' %}">
+
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      height: 44;
+
+    }
+
+    .navbar-nav {
+      font-size: 13px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-fluid bg-1 text-center">
+    <div class="col-md-6">
+      <img src="{% static 'classifier/img/1.jpg' %}"/ class="im" id="boxshadow">
+      <!--<img src="{% static "classifier/img/d1.jpg" %}" alt="something" >
+-->
+    </div>
+    <div class="col-md-6 text-center">
+      <h1>RAITHU MITHRA</h1>
+      <img src="{% static 'classifier/img/2.jpg' %}"/ class="margin" id="boxshadow" width="50%" height="25%">
+    </div>
+  </div>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="{% url 'home' %}"><b>Home</b></a></li>
+          <li><a href="{% url 'dataset' %}"><b>About Dataset</b></a></li>
+          <li><a href="{% url 'algorithm' %}"> <b>Algorithms</b></a></li>
+          <li><a href="http://localhost:8888/notebooks/diseases%20prediction.ipynb"><b>Crop Disease Prediction</b></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid" style="margin-bottom: 16px">
+    <div class="row">
+      <div class="col-md-4 " style="padding-top: 22px">
+        <div class="my-progress-bar">
+
+        </div>
+      </div>
+
+      <div class="col-md-4 " style="padding-top: 65px">
+        <div class="panel panel-primary">
+          <div class="panel-heading">prediction for that particular details is</div>
+          <div class="panel-body">UNITS:QUINTAS</div>
+          <div class="panel-footer panel-primary">Test Result:<h1> {{ test_result }} </h1>
+          </div>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">prediction Accurency</div>
+          <div class="panel-body">Algorithm used : Linear Regression</div>
+          <div class="panel-footer panel-primary">Test Result:<h1>93% </h1>
+          </div>
+        </div>
+        
+
+      </div>
+      <div class="col-md-4 text-center" style="margin-top: -35px">
+        <br><br><br><br><br><br>
+        <img src="{% static 'classifier/img/6.jpg' %}" width=300px height=350px>
+        <div class="panel-footer panel-primary">Crop is:<h1> {{ p_crop }} </h1>
+          </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-bottom: 66">
+
+    <div class="col-md-5 text-center" style="padding-left:px">
+      <img src="{% static 'classifier/img/14.jpg' %}" width="110%">
+      <p>Data Distributed</p>
+    </div>
+    <div class="col-md-7 text-center" style="padding-left:px">
+      <img src="{% static 'classifier/img/3.jpg' %}" width="90%" height="70%">
+      <p>Data Trained</p>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="{% static 'classifier/plugin.js' %}"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+      $(".my-progress-bar").circularProgress({
+        line_width: 6,
+        color: "#42f465",
+        starting_position: 0, // 12.00 o' clock position, 25 stands for 3.00 o'clock (clock-wise)
+        percent: 0, // percent starts from
+        percentage: true,
+        text: "Result Accuracy "
+      }).circularProgress('animate', {{ res }}, 5000);
+});
+
+  </script>
+
+  <div class="footer">
+    <p style="padding-top: 10">Designed by Students of OU College Of Engineering</p>
+  </div>
+
+</body>
+
+</html>

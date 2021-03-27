@@ -1,0 +1,123 @@
+<html>
+{% load static %}
+
+<head>
+
+  <title> analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'classifier/plugin.css' %}">
+
+  <style type="text/css">
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      height: 44;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid bg-1 text-center">
+
+    <div class="col-md-6">
+      <img src="{% static 'classifier/img/1.jpg' %}" id="boxshadow" style="height: 51%">
+
+      <!--<img src="{% static "classifier/img/d1.jpg" %}" alt="something" >
+-->
+    </div>
+    <div class="col-md-6 text-center">
+    <b><h1>RAITHU MITHRA</h1></b>
+      <img src="{% static 'classifier/img/2.jpg' %}"/ class="margin" id="boxshadow" width="50%" height="25%">
+    </div>
+  </div>
+
+
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="{% url 'seq' %}"><b>Home</b></a></li>
+          <li><a href="{% url 'home' %}"><b>Crop Yield</b></a></li>
+          <li><a href="{% url 'dataset' %}"><b>About the Dataset</b></a></li>
+          <li><a href="{% url 'algorithm' %}"><b>Algorithms</b></a></li>
+          <li><a href="http://127.0.0.1:5000/"><b>Crop Price Prediction</b></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Enter Details to test Crop Details </div>
+      <div class="panel-body">
+        <form action="seq" method="post" class="">
+
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="regular2">Crop1:</label>
+                <input type="text" name="crop1">
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="regular2">Crop2:</label>
+                <input type="text" name="crop2">
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="regular2">Crop3:</label>
+                <input type="text" name="crop3"> 
+              </div>
+            </div>
+
+
+          </div>
+                    </div>
+      </div>
+      
+      <center><h2>{{prediction_test}}</h2></center>
+      
+      <div class="panel-footer text-center">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+
+    </div>
+
+
+    </form>
+
+  </div>
+
+
+  <div class="footer">
+    <p style="padding-top: 10">Designed by Students of OU College Of Engineering</p>
+  </div>
+
+
+
+</body>
+
+</html>
